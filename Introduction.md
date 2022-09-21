@@ -1,5 +1,5 @@
 # Learning-to-Understand-Kubernetes
-I am using this Github repo to document my journey with Kubernetes, as I prpare myself to crack CKA certification.
+As I travel through the journey of trying to understand Kubernetes from **Basics of Kubernetes from Udemy**, I am documenting my learnings on this Github repo. This will be an ongoing repo, as I learn various concepts from the world of Kubernetes. So stay tuned!
 ## History of Kubernetes
 Kubernetes also known as K8s was originally developed by Google and was outsourced in 2014. Kuberenetes is built on 15 years of experience at Google in a project called Borg. Kubernetes is written in Go language, a portable language which is like a hybridization between C++, Python and Java. Instead of deploying big servers, Kubernetes approaches the same by deploying large number of small servers or microservices. The transient nature of smaller microservices also allows for decoupling. Communication between these microservices is API call-driven. Cluster configuration is stored in JSON format, but is most often written in YAML.
 ## What are Containers?
@@ -124,3 +124,50 @@ Before we dive into the Lab, it is important to understand the Kubernetes archit
 ## Kubernetes Architecture
 
 ![image](https://user-images.githubusercontent.com/49147976/191431852-c1a6557b-7a04-4286-b176-0a7a21efb71b.png)
+
+**Node**
+
+Node is a machine which can be physical or virtual where containers will be launched by Kubernetes
+
+**Cluster**
+
+A Cluster is a group of nodes on which containerized applications are deployed. If one node fails the application is still accessible from other nodes in the cluster. Having multiple nodes in a cluster not only aids in the application being highly available but also ensures that the application traffic is load balanced across various nodes in the cluster.
+
+**Master**
+
+Now we have a cluster, but who is responsible for managing the cluster? Were is the information about the members of the cluster stored? How are the nodes monitored? When a node fails how do you move the workload of the failed node to another worker node? That’s were the Master comes in. The master is another node with Kubernetes installed in it, and is configured as a Master. The master watches over the nodes in the cluster and is responsible for the actual orchestration of containers on the worker nodes. 
+
+Now it's time to understand various components and their functions in the Kubernetes cluster
+
+![image](https://user-images.githubusercontent.com/49147976/191438716-b5c39da9-e57e-4c12-8af3-6f14f74be9de.png)
+
+When you install Kubernetes on a System, you are actually installing the following components. An API Server. An ETCD service. A kubelet service. A Container Runtime, Controllers and Schedulers.
+
+**API Server**
+
+The API server acts as the front-end for kubernetes. The users, management devices, Command line interfaces all talk to the API server to interact with the kubernetes cluster.
+
+**etcd**
+ETCD is a distributed reliable key-value store used by kubernetes to store all data used to manage the cluster. Think of it this way, when you have multiple nodes and multiple masters in your cluster, etcd stores all that information on all the nodes in the cluster in a distributed manner. ETCD is responsible for implementing locks within the cluster to ensure there are no conflicts between the Masters. 
+
+**Scheduler**
+
+The scheduler is responsible for distributing work or containers across multiple nodes. It looks for newly created containers and assigns them to Nodes.
+
+**Controller**
+
+Controller is also referred to as the brain behind orchestration. They are responsible for noticing and responding when nodes, containers or endpoints goes down. The controllers makes decisions to bring up new containers in such cases.
+
+**Container runtime**
+
+The container runtime is the underlying software that is used to run containers. In our case it happens to be Docker. 
+
+**Kubelet**
+
+Kubelet is the agent that runs on each node in the cluster. The agent is responsible for making sure that the containers are running on the nodes as expected.
+
+### Master Vs. Worker Node 
+
+![image](https://user-images.githubusercontent.com/49147976/191455254-d4a36e97-69f1-49ba-ae48-e9b8b1aabb94.png)
+
+It's important to understand how does a node become a Master vs Worker?
