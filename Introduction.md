@@ -70,13 +70,15 @@ Note that there are many containerized applications readily available today. Man
 
 Bringing up a containerized application is as easy as downloading that image and running it using the Docker run command. For example running >Docker run ansible will run an instance of Ansible on Docker host. Likewise, you can bring up and instance of container instances by simply running mongodb, redis, nodejs images.
 
->docker run ansible
+```
+docker run ansible
 
->docker run mongodb
+docker run mongodb
 
->docker run redis
+docker run redis
 
->docker run nodejs
+docker run nodejs
+```
 
 ### Containers Vs Images
 
@@ -95,3 +97,30 @@ If you look at it, traditionally developers developed applications. Then they ha
 With Docker, a major portion of work involved in setting up the infrastructure is now in the hands of the developers in the form of a Docker file. The guide that the developers built previously to setup the infrastructure can now easily put together into a Dockerfile to create an image for their applications. This image can now run on any container platform and is guaranteed to run the same way everywhere. So the Ops team now can simply use the image to deploy the application. Since the image was already working when the developer built it and operations are not modifying it, it continues to work the same when deployed in production.
 
 ## Container Orchestration
+Alright, we learnt about containers and how applications are packaged inside a container. What if number of applications grow overtime so are users and the dependent application packages such as database, messaging service, web applications etc. This requires the use of more such container to be deployed. You would also need a resource which needs to orchestrate the connectivity between containers and automatically scale up or down based on load. This whole process of automatically deploying and managing these containers at scale is known as **Container Orchestration** 
+
+Now that we understand the importance of a good Container Orchestration technology, let's explore the most popular Container Orchestration technology available today. 
+
+![image](https://user-images.githubusercontent.com/49147976/191417676-e603bbca-db49-4b34-8ac2-07579eb40ee3.png)
+
+**Docker Swarm** from Docker
+
+While Docker Swarm is really easy to setup and get started, it lacks some of the advanced autoscaling features required for complex applications.
+
+**Mesos** from Apache
+
+Mesos on the other hand is quite difficult to setup and get started, but supports many advanced features. 
+
+**Kubernetes** from Google
+
+Kubernetes - arguably the most popular of it all – is a bit difficult to setup and get started but provides a lot of options to customize deployments and supports deployment of complex architectures. Kubernetes is now supported on all public cloud service providers like GCP, Azure and AWS and the kubernetes project is one of the top ranked projects in Github.
+
+There are many advantages with Kubernetes. The application is now highly available since there can be multiple instances of application running on different nodes, so even when nodes fail, the application is highly available. When the demand increases, you can deploy more instances of application in minutes and destroy the same when the load discreses to save cost and resources. When we run out of hardware resources, scale the number of nodes up/down without having to take down the application. And do all of these easily with a set of declarative object configuration files. How cool is that?
+
+Ladies and Gentlemen, that is **Kubernetes**. It is a container orchestration technology used to deploy and manage 100s and 1000s of containers at scale in a clustered environment. 
+
+Before we dive into the Lab, it is important to understand the Kubernetes architecture and various terminologies used in the Kubernetes framework.
+
+## Kubernetes Architecture
+
+![image](https://user-images.githubusercontent.com/49147976/191431852-c1a6557b-7a04-4286-b176-0a7a21efb71b.png)
