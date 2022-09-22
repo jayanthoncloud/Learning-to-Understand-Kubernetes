@@ -171,3 +171,13 @@ Kubelet is the agent that runs on each node in the cluster. The agent is respons
 ![image](https://user-images.githubusercontent.com/49147976/191455254-d4a36e97-69f1-49ba-ae48-e9b8b1aabb94.png)
 
 It's important to understand how does a node become a Master vs Worker?
+
+The master server has the kube-apiserver and that is what makes it a master. All the information gathered are stored in a key-value store on the Master. The key-value store is based on the popular etcd framework. The master also has the controller manager and the scheduler.
+
+Similarly the worker nodes have the kubelet agent that is responsible for interacting with the master to provide health information of the worker node and carry out actions requested by the master on the worker nodes. 
+
+### The Famous Kubectl command ###
+
+![image](https://user-images.githubusercontent.com/49147976/191668527-9d6b5d22-bd8b-4566-b9a3-3051b2f950ce.png)
+
+The Kubectl tool is used to deploy and manahe applications on a kubernetes cluster, to get cluster infromation, get the status of nodes in the cluster and many other cluster operations
