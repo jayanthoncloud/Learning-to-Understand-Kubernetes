@@ -20,6 +20,24 @@ If you don't have any lab environment, you can simply login to play-with-k8s.com
 ## Let's now explore working with Minikube ##
 
 ### Pre-requisites
-1. Kubectl utility must be installed
-2. 
+1. Kubectl utility must be installed (https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/)
+2. Docker or Hyper-V or Virtual Box must be installed
+3. Minikube installer (https://minikube.sigs.k8s.io/docs/start/)
+
+Note: For this lab I am using Docker environment on Windows. You can install Docker from this location : https://docs.docker.com/desktop/install/windows-install/
+
+### Let's proceed to install Minikube utility for Windows ###
+
+1. First download and install Minikube installer from PowerShell using the command below. Make sure to launch PowerShell as Administrator
+```
+New-Item -Path 'c:\' -Name 'minikube' -ItemType Directory -Force
+Invoke-WebRequest -OutFile 'c:\minikube\minikube.exe' -Uri 'https://github.com/kubernetes/minikube/releases/latest/download/minikube-windows-amd64.exe' -UseBasicParsing
+```
+2. Add the minikube.exe binary to the PATH using the PowerShell command below
+```
+   $oldPath = [Environment]::GetEnvironmentVariable('Path', [EnvironmentVariableTarget]::Machine)
+if ($oldPath.Split(';') -inotcontains 'C:\minikube'){ `
+  [Environment]::SetEnvironmentVariable('Path', $('{0};C:\minikube' -f $oldPath), [EnvironmentVariableTarget]::Machine) `
+}
+```
 
