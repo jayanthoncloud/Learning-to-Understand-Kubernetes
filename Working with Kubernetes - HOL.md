@@ -1,5 +1,5 @@
 # Working with Kubernetes - Hands On Lab
-Choosing the tools for our lab to setup Kubernetes. There are several tools available to setup Kubernetes, we can set it up locally on our laptops or VMs using solutions like Minikube and Kubeadm. Let's look at each one of them
+Choosing the tools for our lab to setup Kubernetes. There are several tools available to setup Kubernetes, we can set it up locally on our laptops or VMs using solutions like Minikube and Kubeadm. Let's look at each one of them. For this lab we will use Minikube.
 
 ### Minikube ### 
 
