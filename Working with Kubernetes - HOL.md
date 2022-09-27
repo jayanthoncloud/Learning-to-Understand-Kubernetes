@@ -21,7 +21,7 @@ If you don't have any lab environment, you can simply login to play-with-k8s.com
 
 ### Pre-requisites
 1. Kubectl utility must be installed (https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/)
-2. Docker or Hyper-V or Virtual Box must be installed
+2. Docker or Hyper-V or Virtual Box must be installed (In this lab I have used Hyper-V. To enable Hyper-V on your laptop, follow the documentation: https://learn.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v)
 3. Minikube installer (https://minikube.sigs.k8s.io/docs/start/)
 
 Note: For this lab I am using Docker environment on Windows. You can install Docker from this location : https://docs.docker.com/desktop/install/windows-install/
@@ -40,4 +40,42 @@ if ($oldPath.Split(';') -inotcontains 'C:\minikube'){ `
   [Environment]::SetEnvironmentVariable('Path', $('{0};C:\minikube' -f $oldPath), [EnvironmentVariableTarget]::Machine) `
 }
 ```
+
+### Starting Minikube on my Windows 10 laptop with Hyper-V as Driver ###
+![image](https://user-images.githubusercontent.com/49147976/192564615-3dac84c2-ea73-4108-a4a0-1c5e330705cc.png)
+
+Let's check the status of Minikube
+
+![image](https://user-images.githubusercontent.com/49147976/192567192-204ac89f-ec68-47d5-bb46-56a6098bb628.png)
+
+Let's now execute get nodes command to know the number of nodes running.
+
+![image](https://user-images.githubusercontent.com/49147976/192568110-57654f80-c185-4e90-a207-21ed2d8088a3.png)
+
+Note: Minikube is a single node cluster and it should be in a Ready state
+
+### Deploying Hello Minikube application ###
+
+Copy and paste the below commands into PowerShell
+
+```
+kubectl create deployment hello-minikube --image=docker.io/nginx:1.23
+kubectl expose deployment hello-minikube --type=NodePort --port=80
+```
+
+Now get the status of the Deployment
+
+![image](https://user-images.githubusercontent.com/49147976/192571778-ceb2b669-497a-4425-bc65-d6bf20345806.png)
+
+Let's try to get the URL for the application
+
+![image](https://user-images.githubusercontent.com/49147976/192572663-f165af5b-f1e0-4cce-8db1-aadf2fca4570.png)
+
+Launch the URL of the sample web application. That's it!
+
+![image](https://user-images.githubusercontent.com/49147976/192573173-186ca837-90de-41d4-9696-406988c5f458.png)
+
+
+
+
 
