@@ -1,4 +1,4 @@
-# Working with Kubernetes - Hands On Lab
+# Working with Kubernetes - Using a simple cluster using Minikube #
 Choosing the tools for our lab to setup Kubernetes. There are several tools available to setup Kubernetes, we can set it up locally on our laptops or VMs using solutions like Minikube and Kubeadm. Let's look at each one of them. For this lab we will use Minikube.
 
 ### Minikube ### 
@@ -74,6 +74,11 @@ Let's try to get the URL for the application
 Launch the URL of the sample web application. That's it!
 
 ![image](https://user-images.githubusercontent.com/49147976/192573173-186ca837-90de-41d4-9696-406988c5f458.png)
+
+### You can now cleanup the deployment by deleting the services, deployment and the cluster ###
+
+![image](https://user-images.githubusercontent.com/49147976/192575356-b1b82258-3825-4518-abf3-880f21b44642.png)
+
 
 
 
