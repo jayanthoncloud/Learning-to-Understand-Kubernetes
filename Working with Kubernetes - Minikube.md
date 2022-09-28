@@ -79,6 +79,21 @@ Launch the URL of the sample web application. That's it!
 
 ![image](https://user-images.githubusercontent.com/49147976/192575356-b1b82258-3825-4518-abf3-880f21b44642.png)
 
+## Working with Pods ##
+
+Let's try to deploy nginx web server from Docker Container Registry
+
+![image](https://user-images.githubusercontent.com/49147976/192761352-9f65f532-fe06-4647-8ab3-e66ee1b9a660.png)
+
+We can check the status of the Pod using the following command
+```
+kubectl get pods
+```
+We can get more information about the Pod using "describe" command
+```
+kubectl describe pod nginx
+```
+![image](https://user-images.githubusercontent.com/49147976/192762564-467d0b6f-4adc-46e1-bd82-0e12124d179d.png)
 
 
 
