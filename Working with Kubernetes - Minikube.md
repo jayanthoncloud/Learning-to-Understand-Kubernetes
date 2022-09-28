@@ -95,7 +95,10 @@ kubectl describe pod nginx
 ```
 ![image](https://user-images.githubusercontent.com/49147976/192762564-467d0b6f-4adc-46e1-bd82-0e12124d179d.png)
 
-
+If you want to get information about the Pod and it's internal IP address in a tabular format you can use the below command
+```
+kubectl get pods -o wide
+```
 
 
 
