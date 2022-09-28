@@ -181,3 +181,11 @@ Similarly the worker nodes have the kubelet agent that is responsible for intera
 ![image](https://user-images.githubusercontent.com/49147976/191668527-9d6b5d22-bd8b-4566-b9a3-3051b2f950ce.png)
 
 The Kubectl tool is used to deploy and manage applications on a kubernetes cluster, to get cluster infromation, get the status of nodes in the cluster and many other cluster operations
+
+### What is a POD? ###
+
+![image](https://user-images.githubusercontent.com/49147976/192710262-e942a5db-6e16-4c1f-a3e5-6b6396a50905.png)
+
+Here we see the simplest of simplest cases were you have a single node kubernetes cluster with a single instance of your application running in a single docker container encapsulated in a POD. What if the number of users accessing your application increase and you need to scale your application? You need to add additional instances of your web application to share the load. Now, where would you spin up additional instances? Do we bring up a new container instance within the same POD? No! We create a new POD altogether with a new instance of the same application. As you can see we now have two instances of our web application running on two separate PODs on the same kubernetes system or node. 
+
+What if the user base FURTHER increases and your current node has no sufficient capacity? Well then you can always deploy additional PODs on a new node in the cluster. You will have a new node added to the cluster to expand the cluster’s physical capacity. So, what I am trying to illustrate in this figure is that, PODs usually have a one-to-one relationship with containers running your application. To scale UP you create new PODs and to scale down you delete PODs. You do not add additional containers to an existing POD to scale your application. 
