@@ -103,7 +103,7 @@ Let's now try to create a Pod with a simple YAML definition file
 
 Open a Notepad++ editor and enter the following data in the notepad file. Pat attention to the spaces between the parent objects and child. This is very important. Make sure all parent objets have same indentation and the same rule applies to child objects as well. Save this file as Pod.yaml
 ```
-apiversion: v1
+apiVersion: v1
 kind: Pod
 metadata:
   name: nginx
