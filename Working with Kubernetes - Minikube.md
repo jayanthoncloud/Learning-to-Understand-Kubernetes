@@ -75,7 +75,7 @@ Launch the URL of the sample web application. That's it!
 
 ![image](https://user-images.githubusercontent.com/49147976/192573173-186ca837-90de-41d4-9696-406988c5f458.png)
 
-### You can now cleanup the deployment by deleting the services, deployment and the cluster ###
+### You can now cleanup the deployment by deleting the services and deployment ###
 
 ![image](https://user-images.githubusercontent.com/49147976/192575356-b1b82258-3825-4518-abf3-880f21b44642.png)
 
@@ -98,6 +98,33 @@ kubectl describe pod nginx
 If you want to get information about the Pod and it's internal IP address in a tabular format you can use the below command
 ```
 kubectl get pods -o wide
+```
+Let's now try to create a Pod with a simple YAML definition file
+
+Open a Notepad++ editor and enter the following data in the notepad file. Pat attention to the spaces between the parent objects and child. This is very important. Make sure all parent objets have same indentation and the same rule applies to child objects as well. Save this file as Pod.yaml
+```
+apiversion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    app: nginx
+    tier: frontend
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+```
+
+Check the indentation of the Pod.yaml file created using the cat command
+```
+cat Pod.yaml
+```
+![image](https://user-images.githubusercontent.com/49147976/192947155-0a5e70c9-0d28-49fc-97e1-da8dd241ac8b.png)
+
+Now apply this Pod.yaml file using the kubectl apply command
+```
+kubectl apply -f Pod.yaml
 ```
 
 
