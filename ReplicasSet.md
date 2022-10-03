@@ -3,6 +3,8 @@
 
 A ReplicaSet (RS) is a Kubernetes object that ensures there is always a stable set of running pods for a specific workload. The ReplicaSet configuration defines a number of identical pods required, and if a pod is evicted or fails, creates more pods to compensate for the loss.
 
+### Let's now learn how to work with ReplicaSet ###
+
 Let's try to create a ReplicaSet using the yaml definition file. Pay attention to the objects in the replicaset yaml file. This is best created using yaml editor like Virtual Studio Code. Below is the snapshot of a replicaset yaml file used to create nginx pods. Pay attention to the spaces and indentations for the parent and child objects. Copy and pase the below data into yaml file and save the file as "replicaset.yaml"
 ```
 apiVersion: apps/v1
