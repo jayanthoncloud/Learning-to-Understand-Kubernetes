@@ -6,6 +6,8 @@ Kubernetes also known as K8s was originally developed by Google and was outsourc
 To understand Kubernetes, we must first understand two things – Container and Orchestration. Once we get familiarized with both of these terms we would be in a position to understand what kubernetes is capable of. We will start looking at each of these next. Before we try and understand what are containers, let's first understand why containers?
 ### Problem Statement
 ![image](https://user-images.githubusercontent.com/49147976/191176534-12e5ad84-c884-41d2-874d-29f0c316284c.png)
+*Source: Udermy - Kubernetes for Absolute Beginers*
+
 Let's try and decode from the above diagram, what is known as a traditional way of developing applications. There is a need to setup end-end stack including various technologies like web server using g NodeJS and a database such as MongoDB/CouchDB, messaging system like Redis and an orchestration tool like Ansible. When I was a tester/developer, I had lot of difficulty developing this application with all these different components. 
 
 Firstly, their compatibility with the underlying OS. We had to ensure that all these different services were compatible with the version of the OS we were planning to use. There have been times when certain version of these services were not compatible with the OS, and we have had to go back and look for another OS that was compatible with all of these different services. 
@@ -21,6 +23,7 @@ So we needed something that could help us with the compatibility issue. And some
 
 ### Docker is the answer?
 ![image](https://user-images.githubusercontent.com/49147976/191179727-e49fe931-0194-4f82-8763-566024a158aa.png)
+*Source: Udermy - Kubernetes for Absolute Beginers*
 
 With Docker we were able to run each component in a separate container, with its own libraries and its own dependencies. All on the same VM and the OS, but within separate environments or containers. We just had to build the docker configuration once, and all our developers could now get started with a simple “docker run” command. Irrespective of what underlying OS they run, all they needed to do was to make sure they had Docker installed on their systems.
 
@@ -35,10 +38,12 @@ Containers are completely isolated environments, as in they can have their own p
 Before we attempt to understand Docker, let's first try and understand how an Operating System works.
 
 ![image](https://user-images.githubusercontent.com/49147976/191182440-c404cd0a-fadd-4fee-bb95-0eb85d365ac4.png)
+*Source: Udermy - Kubernetes for Absolute Beginers*
 
 If you look at operating systems like Ubuntu, CentOS, Fedora, Suse etc. they consist of two main things. Kernel and Software. What differentiates these different operating system distributions is the software component although they all share the same kernel. This software may consist of a different User Interface, drivers, compilers, File managers, developer tools etc. So you have a common Linux Kernel shared across all OSes and some custom softwares that differentiate Operating systems from each other.
 
 ![image](https://user-images.githubusercontent.com/49147976/191190616-f487e4c3-7080-4d55-b555-e7f40644b95f.png)
+*Source: Udermy - Kubernetes for Absolute Beginers*
 
 Sharing the same Kernel? What does that mean?
 
@@ -56,6 +61,7 @@ them.
 Since most of us are from Virtual Machine background, it's good to understand the difference between Virtual Machines and Containers. 
 
 ![image](https://user-images.githubusercontent.com/49147976/191199335-5fc88bc7-a712-4ca0-ae2d-ca7a41ff751a.png)
+*Source: Udermy - Kubernetes for Absolute Beginers*
 
 As seen from the above diagram, in case of Docker, we have the underlying hardware and then the OS and then on top Docker manages the containers that run libraries and dependencies alone. In case of Virtual Machines, we have OS on the underlying hardware, then hypervisor like ESX or Hyper-V. As you can see each Virtual Machine runs it's own version of OS inside it and then the application and it's libraries and dependencies
 
@@ -83,6 +89,7 @@ docker run nodejs
 ### Containers Vs Images
 
 ![image](https://user-images.githubusercontent.com/49147976/191204280-06f14ecc-83fd-49e7-b113-414ec119159a.png)
+*Source: Udermy - Kubernetes for Absolute Beginers*
 
 Now that I mentioned Images in the previous sentence, it is important to understand the difference between Containers and Images. An Image is a package or a template just like a VM template that we refer to in the Virtual Machine world. Containers are running instances off images that are isolated and have their own environments and set of processes.
 
@@ -102,6 +109,7 @@ Alright, we learnt about containers and how applications are packaged inside a c
 Now that we understand the importance of a good Container Orchestration technology, let's explore the most popular Container Orchestration technology available today. 
 
 ![image](https://user-images.githubusercontent.com/49147976/191417676-e603bbca-db49-4b34-8ac2-07579eb40ee3.png)
+*Source: Udermy - Kubernetes for Absolute Beginers*
 
 **Docker Swarm** from Docker
 
@@ -124,6 +132,7 @@ Before we dive into the Lab, it is important to understand the Kubernetes archit
 ## Kubernetes Architecture
 
 ![image](https://user-images.githubusercontent.com/49147976/191431852-c1a6557b-7a04-4286-b176-0a7a21efb71b.png)
+*Source: Udermy - Kubernetes for Absolute Beginers*
 
 **Node**
 
@@ -140,6 +149,7 @@ Now we have a cluster, but who is responsible for managing the cluster? Were is 
 Now it's time to understand various components and their functions in the Kubernetes cluster
 
 ![image](https://user-images.githubusercontent.com/49147976/191438716-b5c39da9-e57e-4c12-8af3-6f14f74be9de.png)
+*Source: Udermy - Kubernetes for Absolute Beginers*
 
 When you install Kubernetes on a System, you are actually installing the following components. An API Server. An ETCD service. A kubelet service. A Container Runtime, Controllers and Schedulers.
 
@@ -169,6 +179,7 @@ Kubelet is the agent that runs on each node in the cluster. The agent is respons
 ### Master Vs. Worker Node 
 
 ![image](https://user-images.githubusercontent.com/49147976/191455254-d4a36e97-69f1-49ba-ae48-e9b8b1aabb94.png)
+*Source: Udermy - Kubernetes for Absolute Beginers*
 
 It's important to understand how does a node become a Master vs Worker?
 
@@ -179,12 +190,14 @@ Similarly the worker nodes have the kubelet agent that is responsible for intera
 ### The Famous Kubectl command ###
 
 ![image](https://user-images.githubusercontent.com/49147976/191668527-9d6b5d22-bd8b-4566-b9a3-3051b2f950ce.png)
+*Source: Udermy - Kubernetes for Absolute Beginers*
 
 The Kubectl tool is used to deploy and manage applications on a kubernetes cluster, to get cluster infromation, get the status of nodes in the cluster and many other cluster operations
 
 ### What is a POD? ###
 
 ![image](https://user-images.githubusercontent.com/49147976/192710262-e942a5db-6e16-4c1f-a3e5-6b6396a50905.png)
+*Source: Udermy - Kubernetes for Absolute Beginers*
 
 Here we see the simplest of simplest cases were you have a single node kubernetes cluster with a single instance of your application running in a single docker container encapsulated in a POD. What if the number of users accessing your application increase and you need to scale your application? You need to add additional instances of your web application to share the load. Now, where would you spin up additional instances? Do we bring up a new container instance within the same POD? No! We create a new POD altogether with a new instance of the same application. As you can see we now have two instances of our web application running on two separate PODs on the same kubernetes system or node. 
 
