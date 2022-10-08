@@ -23,6 +23,7 @@ We need to consider two scenarios here. Pods communicating within the same node 
    ![image](https://user-images.githubusercontent.com/49147976/194690370-daa1f63e-6699-4001-9c90-74226120edd2.png)
    *Source: Udermy - Kubernetes for Absolute Beginers*
 3. **Pod to Service Communication**
-   Before we delve into this topic it's important to understand What is a Kubernetes Service
+   
+   Before we delve into this topic it's important to understand [What is a Kubernetes Service?](https://github.com/jayanthyk/Learning-to-Understand-Kubernetes/blob/main/Services.md)
 
 
