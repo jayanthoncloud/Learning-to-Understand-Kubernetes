@@ -59,6 +59,16 @@ You can now launch the web page by copy pasting the above URL in any web browser
    The PODs all have an IP address assigned to them as we can see on the screen. But these IPs as we know are not static, these PODs can go down anytime and new PODs      are created all the time and hence you CANNOT rely on these IP addresses for internal communication within the application. Also what if the first front-end POD at    10.244.0.3 need to connect to a backend service? Which of the 3 would it go to and who makes that decision?
 
    A kubernetes service can help us group these PODs together and provide a single interface to access the PODs in a group. For example a service created for the          backend PODs will help group all the backend PODs together and provide a single interface for other PODs to access this service. The requests are then forwarded to    one of the PODs under the service randomly. Similarly, create additional services for Redis and allow the backend PODs to access the redis system through this          service. This enables us to easily and effectively deploy a microservices based application on kubernetes cluster. Each layer can now scale or move as required        without impacting communication between the various services. Each service gets an IP and name assigned to it inside the cluster and that is the name that should be    used by other PODs to access the service. This type of service is known as ClusterIP. 
-   ### Let's learn how to work with Kubernetes ClusterIP Service ###
-     
+        
 3. **LoadBalancer Service**
+
+   ![image](https://user-images.githubusercontent.com/49147976/195006337-c1e15179-17b1-45e5-bf9a-576cb63baae7.png)
+   *Source: Udermy - Kubernetes for Absolute Beginers*
+   
+   We will quickly recap what we learned about the two service types, so that we can work our way to the LoadBalancer type. We have a 3 node cluster with IPs              192.168.1.2,3 and 4. Our application is two tier, there is a database service and a front-end web service for users to access the application. The default service      type – known as ClusterIP – makes a service, such as a redis or database service available internally within the kubernetes cluster for other applications to          consume. 
+   
+   The next tier in my application happens to be a python based web front-end. This application connects to the backend using Service created for the redis service. To 
+   expose the application to the end users, we create another service of type NodePort. Creating a service of type NodePort exposes the application on a high end port    of the Node and the users can access the application at any IP of my nodes with the port 30008. 
+
+   Now, what IP do you give your end users to access your application? You cannot give them all three and let them choose one of their own. What end users really want    is a single URL to access the application. For this, you will be required to setup a separate Load Balancer VM in your environment. In this case I deploy a new VM      for load balancer purposes and configure it to forward requests that come to it to any of the Ips of the Kubernetes nodes. I will then configure my organization's      DNS to point to this load balancer when a user hosts http://myapp.com. Now setting up that load balancer by myself is a tedious task, and I might have to do that in    my local or on-prem environment. However, if I happen to be on a supported CloudPlatform, like Google Cloud Platform, I could leverage the native load balancing        functionalities of the cloud platform to set this up. Again you don’t have to set that up manually, Kubernetes sets it up for you. Kubernetes has built-in              integration with supported cloud platforms.
+
