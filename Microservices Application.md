@@ -33,7 +33,7 @@ metadata:
 spec:
   containers:
     - name: voting-app 
-      image: kodecloud/examplevotingapp_vote:v1
+      image: kodekloud/examplevotingapp_vote:v1
       ports:
         - containerPort: 80
 ```
@@ -49,7 +49,7 @@ metadata:
 spec:
   containers:
     - name: result-app 
-      image: kodecloud/examplevotingapp_result:v1
+      image: kodekloud/examplevotingapp_result:v1
       ports:
         - containerPort: 80
 ```
@@ -102,7 +102,7 @@ metadata:
 spec:
   containers:
     - name: worker-app 
-      image: kodecloud/examplevotingapp_worker:v1
+      image: kodekloud/examplevotingapp_worker:v1
 ```
 Now that we have created yaml files for the 5 Pods, let's now create 4 yaml files for the services.
 
@@ -178,3 +178,24 @@ spec:
     name: result-app-pod
     app: demo-voting-app 
 ```
+**Let's now proceed to creating Pods and Services from our minikube cluster**                                                                                                 
+Before we begin, ensure there are no existing pods and the default kubernetes service is running   
+
+**Let's now proceed to create the Voting app Pod and it's service.**
+```
+#Let's try to create voting app pod and it's service
+kubectl create -f voting-app-pod.yaml
+kubectl create -f voting-app-service.yaml
+#Let's check to see if the Pods and Service is created successfully
+kubectl get pods,services
+```
+![image](https://user-images.githubusercontent.com/49147976/195081828-9e8cba89-bcff-49c5-b75e-fad435b376b5.png)
+Just to ensure everything is as expected, try to launch the external facing URL for the voting app service. If you're running this on the node you can get the IP of the node along with the port number to access from the web browser. Since in our case it is running on minikube, we can get the URL of the service using the "minikube service <name of the voting service> --url" command and then launch the URL from the browser. Make sure the voting app shows is displayed.                            
+![image](https://user-images.githubusercontent.com/49147976/195082782-990dbc1f-f027-41e6-835e-5ae30b3567ee.png)
+![image](https://user-images.githubusercontent.com/49147976/195083046-5cdfa5cf-c621-4171-8486-9eb1db372622.png)
+
+**Let's now proceed to create the Redis database Pod and it's service.**
+```
+#create the redis pod
+kubectl create -f 
+
