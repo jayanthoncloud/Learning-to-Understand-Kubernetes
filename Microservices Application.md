@@ -81,7 +81,7 @@ metadata:
 spec:
   containers:
     - name: postgres  
-      image: postgres
+      image: postgres:9.4
       ports:
         - containerPort: 5432
       env:
@@ -181,7 +181,7 @@ spec:
 **Let's now proceed to creating Pods and Services from our minikube cluster**                                                                                                 
 Before we begin, ensure there are no existing pods and the default kubernetes service is running   
 
-**Let's now proceed to create the Voting app Pod and it's service.**
+**Let's now proceed to create the Voting app Pod and it's service**
 ```
 #Let's try to create voting app pod and it's service
 kubectl create -f voting-app-pod.yaml
@@ -194,8 +194,60 @@ Just to ensure everything is as expected, try to launch the external facing URL 
 ![image](https://user-images.githubusercontent.com/49147976/195082782-990dbc1f-f027-41e6-835e-5ae30b3567ee.png)
 ![image](https://user-images.githubusercontent.com/49147976/195083046-5cdfa5cf-c621-4171-8486-9eb1db372622.png)
 
-**Let's now proceed to create the Redis database Pod and it's service.**
+**Let's now proceed to create the Redis database Pod and it's service**
 ```
 #create the redis pod
-kubectl create -f 
+kubectl create -f redis-pod.yaml
+#create the redis service
+kubectl create -f redis-service.yaml
+#Let's check to see if the Pods and Service is created successfully
+kubectl get pods,services
+```
+![image](https://user-images.githubusercontent.com/49147976/195119977-c803bbda-ffac-4825-b6bd-23f74d450472.png)
 
+**Let's now proceed to create the Postgres database Pod and it's service**
+```
+#create the postgres pod
+kubectl create -f postgres-pod.yaml
+#create the postgres service
+kubectl create -f postgres-service.yaml
+#Let's check to see if the Pods and Service is created successfully
+kubectl get pods,services
+```
+![image](https://user-images.githubusercontent.com/49147976/195121136-2824d774-1422-4cfc-a1f3-9ceb705476cf.png)
+
+**Let's now proceed to create the worker app Pod**
+```
+#create the worker app pod
+kubectl create -f worker-app-pod.yaml
+#Let's check to see if the Pod is created successfully
+kubectl get pods
+```
+![image](https://user-images.githubusercontent.com/49147976/195130560-24ef8018-708e-429e-82fd-cb64b6f5b210.png)
+  
+**Finally, let's now proceed to create the results app Pod and service**
+```
+#create the results app pod
+kubectl create -f result-pod.yaml
+#create the results app service
+kubectl create -f result-app-service.yaml
+#Let's check to see if the Pods and Service is created successfully
+kubectl get pods,services
+```
+![image](https://user-images.githubusercontent.com/49147976/195132515-f5b4b060-4995-4655-9418-5e06eb344295.png)
+
+**Let's now try to get the URL of both Voting app and Results app**
+```
+minikube serviice voting-service --url
+minikube service result-service --url
+```
+![image](https://user-images.githubusercontent.com/49147976/195138197-442632ac-c54e-43c2-87ec-40868244ee4a.png)
+
+**It's now time to check if the application is working**                                                                                                            
+Try to cast a volte by launching the voting app URL, and then launch the results app URL to check if the vote is registered.
+
+**Output**
+
+![image](https://user-images.githubusercontent.com/49147976/195139724-aa213f57-2124-456a-b063-0da48f2be3c0.png)
+  
+That's it! We have successfully tested a multi-tier application with multiple deployment platforms deployed using Kubernetes
