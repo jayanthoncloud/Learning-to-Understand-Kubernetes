@@ -18,4 +18,163 @@ Before we begin, it's important to plan this entire activity. Our Goal is to dep
 *Source: Udermy - Kubernetes for Absolute Beginers*
 
 So just to summarize, we will be deploying 5 Pods in total (voting app, redis, worker node, PostegresSQL and results app), 4 services (voting app, redis, PostgresSQL and results app). We will be using the default container images available in Docker repository. 
+### Let's now understand how to work with the lab to build the Voting Application ###
+As a first step, we need to create the object definition files in yaml. 5 yaml files for the Pods and 4 yaml files for the service. You can copy paste the contents of the yaml file and name it respectively for the Pods and Services you will be creating in the following section.              
 
+**Let's create yaml file for the voting app Pod and name it as "voting-app-pod.yaml"**
+```
+apiVersion: v1 
+kind: Pod
+metadata:
+  name: voting-app-pod
+  labels:
+    name: voting-app-pod
+    app: demo-voting-app
+spec:
+  containers:
+    - name: voting-app 
+      image: kodecloud/examplevotingapp_vote:v1
+      ports:
+        - containerPort: 80
+```
+**Let's Create yaml file for the results app Pod and name it as "result-app-pod.yaml"**
+```
+apiVersion: v1 
+kind: Pod
+metadata:
+  name: result-app-pod
+  labels:
+    name: result-app-pod
+    app: demo-voting-app
+spec:
+  containers:
+    - name: result-app 
+      image: kodecloud/examplevotingapp_result:v1
+      ports:
+        - containerPort: 80
+```
+**Let's Create yaml file for the redis database Pod and name it as "redis-pod.yaml"**
+```
+apiVersion: v1 
+kind: Pod
+metadata:
+  name: redis-pod
+  labels:
+    name: redis-pod
+    app: demo-voting-app
+spec:
+  containers:
+    - name: redis 
+      image: redis
+      ports:
+        - containerPort: 6379
+```
+**Let's Create yaml file for the postgres database Pod and name it as "postgres-pod.yaml"**
+```
+apiVersion: v1 
+kind: Pod
+metadata:
+  name: postgres-pod
+  labels:
+    name: postgres-pod
+    app: demo-voting-app
+spec:
+  containers:
+    - name: postgres  
+      image: postgres
+      ports:
+        - containerPort: 5432
+      env:
+        - name: POSTGRES_USER
+          value: "postgres"
+        - name: POSTGRES_PASSWORD
+          value: "postgres"
+```
+**Let's Create yaml file for the worker app Pod and name it as "worker-app-pod.yaml"**
+```
+apiVersion: v1 
+kind: Pod
+metadata:
+  name: worker-app-pod
+  labels:
+    name: worker-app-pod
+    app: demo-voting-app
+spec:
+  containers:
+    - name: worker-app 
+      image: kodecloud/examplevotingapp_worker:v1
+```
+Now that we have created yaml files for the 5 Pods, let's now create 4 yaml files for the services.
+
+**Let's Create yaml file for the redis service and name it as "redis-service.yaml"**
+```
+apiVersion: v1 
+kind: Service
+metadata:
+  name: redis
+  labels:
+    name: redis-service
+    app: demo-voting-app
+spec:
+  ports:
+    - port: 6379
+      targetPort: 6379
+  selector:
+    name: redis-pod
+    app: demo-voting-app 
+```
+**Let's Create yaml file for the postgres service and name it as "postgres-service.yaml"**
+```
+apiVersion: v1 
+kind: Service
+metadata:
+  name: db
+  labels:
+    name: postgres-service
+    app: demo-voting-app
+spec:
+  ports:
+    - port: 5432
+      targetPort: 5432
+  selector:
+    name: postgres-pod
+    app: demo-voting-app 
+```
+**Let's Create yaml file for the voting app service and name it as "voting-app-service.yaml"**
+```
+apiVersion: v1 
+kind: Service
+metadata:
+  name: voting-service
+  labels:
+    name: voting-service
+    app: demo-voting-app
+spec: 
+  type: NodePort 
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 30004
+  selector:
+    name: voting-app-pod
+    app: demo-voting-app 
+```
+**Let's Create yaml file for the results app service and name it as "result-app-service.yaml"**
+```
+apiVersion: v1 
+kind: Service
+metadata:
+  name: result-service
+  labels:
+    name: result-service
+    app: demo-voting-app
+spec:
+  type: NodePort
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 30005
+  selector:
+    name: result-app-pod
+    app: demo-voting-app 
+```
