@@ -192,7 +192,7 @@ Similarly the worker nodes have the kubelet agent that is responsible for intera
 ![image](https://user-images.githubusercontent.com/49147976/191668527-9d6b5d22-bd8b-4566-b9a3-3051b2f950ce.png)
 *Source: Udermy - Kubernetes for Absolute Beginers*
 
-The Kubectl tool is used to deploy and manage applications on a kubernetes cluster, to get cluster infromation, get the status of nodes in the cluster and many other cluster operations
+The Kubectl tool is used to deploy and manage applications on a kubernetes cluster, to get cluster infromation, get the status of nodes in the cluster and many other cluster operations.
 
 ### What is a POD? ###
 
