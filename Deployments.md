@@ -7,7 +7,7 @@ Kubernetes saves time and mitigates errors by automating the work and repetitive
 
 ### Let's now learn how to work with Kubernetes Deployments ###
 
-Let's try to create a deployment using the yaml definition file. Pay attention to the objects in the deployment yaml file. This is best created using yaml editor like Virtual Studio Code. Below is the snapshot of a deployment yaml file used to create nginx pods. Pay attention to the spaces and indentations for the parent and child objects. Copy and pase the below data into yaml file and save the file as "deployment.yaml" Note: The kind is "Deployment"
+Let's try to create a deployment using the yaml definition file. Pay attention to the objects in the deployment yaml file. This is best created using yaml editor like Virtual Studio Code. Below is the snapshot of a deployment yaml file used to create nginx pods. Pay attention to the spaces and indentations for the parent and child objects. Copy and pase the below data into yaml file and save the file as "deployment.yaml" Note: The kind is "Deployment".
 ```
 apiVersion: apps/v1
 kind: Deployment  
