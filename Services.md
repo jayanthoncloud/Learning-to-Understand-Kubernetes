@@ -5,7 +5,7 @@ Kubernetes Services enable communication between various components within and o
 ![image](https://user-images.githubusercontent.com/49147976/194712724-9d9c5a1d-3f9f-453e-9022-3d9c8e241461.png)
 *Source: Udermy - Kubernetes for Absolute Beginers*
 
-Let's look at some of the usecases of Services. As we discussed Services is responsible for establishing communication between front-end, back-end PODs, external data source which helps users to access the application. Let's look at various types of Services
+Let's look at some of the usecases of Services. As we discussed Services is responsible for establishing communication between front-end, back-end PODs, external data source which helps users to access the application. Let's look at various types of Services.
 1. **NodePort Service**
    ![image](https://user-images.githubusercontent.com/49147976/194713506-110ad1c3-0c73-4fa0-a0a0-1146462a7e5d.png)
    *Source: Udermy - Kubernetes for Absolute Beginers*
