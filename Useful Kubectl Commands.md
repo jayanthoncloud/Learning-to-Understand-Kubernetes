@@ -1,5 +1,5 @@
 # Useful Kubectl Commands
-Let's look at some of the popular Kubectl commands that we should familiarize
+Let's look at some of the popular Kubectl commands that we should familiarize.
 
 To find the number of nodes in a cluster and the kubernetes version
 ```
