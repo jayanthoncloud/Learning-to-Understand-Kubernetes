@@ -1,4 +1,4 @@
-# How to build a Simple Microservices based application, Voting App ?
+# How to build a Simple Microservices based application, Voting App?
 ## Application Architecture of Voting App
 
 ![image](https://user-images.githubusercontent.com/49147976/195018147-58140e54-d4d9-4a3a-85cb-fe718731f8e8.png)
