@@ -18,7 +18,7 @@ We need to consider two scenarios here. Pods communicating within the same node 
    *Source: Udermy - Kubernetes for Absolute Beginers*
 2. **Pod to Pod Communication between 2 Nodes**
 
-   It is important to note that when Kubernetes is configured it doesn't inherently take care of networking. It expects us to handle the networking. This becomes a          challenge when Pods are trying to communicate with one another on two different nodes. Thankfully this is handled by many of the Kubernetes networking plug-ins such      cisco ACI networks, Cilium, Big Cloud Fabric, Flannel, Vmware NSX-t, Calico etc. All the routing and assignment of IP addresses to various Pods on different nodes are    all handled by these networking solutions. 
+   It is important to note that when Kubernetes is configured it doesn't inherently take care of networking. It expects us to handle the networking. This becomes a challenge when Pods are trying to communicate with one another on two different nodes. Thankfully this is handled by many of the Kubernetes networking plug-ins such cisco ACI networks, Cilium, Big Cloud Fabric, Flannel, Vmware NSX-t, Calico etc. All the routing and assignment of IP addresses to various Pods on different nodes are all handled by these networking solutions. 
    
    ![image](https://user-images.githubusercontent.com/49147976/194690370-daa1f63e-6699-4001-9c90-74226120edd2.png)
    *Source: Udermy - Kubernetes for Absolute Beginers*
