@@ -15,7 +15,7 @@ There are hosted solutions available in the cloud environment such as GCP, Azure
 
 ### play-with-k8s.com ###
 
-If you don't have any lab environment, you can simply login to play-with-k8s.com and get your hands on a kubernetes cluster instantly
+If you don't have any lab environment, you can simply login to play-with-k8s.com and get your hands on a kubernetes cluster instantly.
 
 ## Let's now explore working with Minikube ##
 
