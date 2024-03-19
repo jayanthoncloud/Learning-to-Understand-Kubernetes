@@ -2,7 +2,7 @@
 
 ## What is Kubernetes Updates? ##
 
-Let's say Kubernetes deployment deploys a particular instance of your application and tomorrow there is a newer version of the application made available. One needs to update the application instance to the newer version to take advantage of the latest and greatest features. Now there are two ways to do this and this is called ** Deployment Strategy **
+Let's say Kubernetes deployment deploys a particular instance of your application and tomorrow there is a newer version of the application made available. One needs to update the application instance to the newer version to take advantage of the latest and greatest features. Now there are two ways to do this and this is called ** Deployment Strategy **.
 
 ### Deployment Strategy ###
 
